@@ -3,21 +3,14 @@ extends CharacterBody2D
 const SPEED = 300.0
 
 func _physics_process(delta):
-
 	# Get the input direction for both horizontal and vertical movement
-	var direction_x = Input.get_axis("ui_left", "ui_right")
-	var direction_y = Input.get_axis("ui_up", "ui_down")
+	var direction = Vector2(
+		Input.get_axis("ui_left", "ui_right"),
+		Input.get_axis("ui_up", "ui_down")
+	).normalized()
+	
+	# Calculate velocity based on the direction and speed
+	velocity = direction * SPEED
 
-	# Handle horizontal movement
-	if direction_x:
-		velocity.x = direction_x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	# Handle vertical movement
-	if direction_y:
-		velocity.y = direction_y * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
+	# Move the character and slide along collisions
 	move_and_slide()
