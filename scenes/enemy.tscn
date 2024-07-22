@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccj4n3lqm563q"]
+[gd_scene load_steps=12 format=3 uid="uid://ccj4n3lqm563q"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_5857s"]
 [ext_resource type="Texture2D" uid="uid://d0v7nmyv8x5r6" path="res://assets/Enemy/32x32-bat-sprite.png" id="1_v5oyx"]
+[ext_resource type="PackedScene" uid="uid://bnno2tke14whk" path="res://scenes/Utility/hurt_box.tscn" id="3_xfv22"]
+[ext_resource type="PackedScene" uid="uid://cf40nflbu4g62" path="res://scenes/Utility/hit_box.tscn" id="4_j4uwp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fk3w0"]
 atlas = ExtResource("1_v5oyx")
@@ -38,7 +40,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8er02"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m1dia"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vl81"]
+
 [node name="Enemy_bat_weak" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_5857s")
 
@@ -48,4 +57,24 @@ autoplay = "default"
 frame_progress = 0.14349
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_8er02")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_xfv22")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_m1dia")
+
+[node name="HitBox" parent="." instance=ExtResource("4_j4uwp")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_4vl81")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

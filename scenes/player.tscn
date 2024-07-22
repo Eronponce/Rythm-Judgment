@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwhtdevvbt5ip"]
+[gd_scene load_steps=9 format=3 uid="uid://dwhtdevvbt5ip"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_k25ql"]
 [ext_resource type="Texture2D" uid="uid://cufi7rr4467to" path="res://assets/Player/player_sprite.png" id="1_xlm0e"]
+[ext_resource type="PackedScene" uid="uid://bnno2tke14whk" path="res://scenes/Utility/hurt_box.tscn" id="3_iep82"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmw1u"]
 atlas = ExtResource("1_xlm0e")
@@ -28,6 +29,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4xa7"]
 size = Vector2(15, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxsgx"]
+size = Vector2(12, 20)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_k25ql")
@@ -41,3 +45,15 @@ frame_progress = 0.972347
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, -14.5)
 shape = SubResource("RectangleShape2D_t4xa7")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_iep82")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(3, -14)
+shape = SubResource("RectangleShape2D_sxsgx")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]

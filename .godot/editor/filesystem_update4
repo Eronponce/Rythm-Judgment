@@ -1,7 +1,13 @@
-res://scripts/player.gd
 res://scenes/game.tscn
 res://scenes/player.tscn
 res://scenes/gema.tscn
-res://scripts/gema.gd
 res://scenes/enemy.tscn
 res://scenes/enemy.gd
+res://scripts/player.gd
+res://scenes/Utility/hit_box.gd
+res://scenes/Utility/hurt_box.gd
+res://scenes/Utility/hit_box.tscn
+res://scenes/Utility/hurt_box.tscn
+res://scenes/Utility/enemy_spawner.tscn
+res://scenes/Utility/enemy_spawner.gd
+res://scenes/Utility/spawn_info.gd

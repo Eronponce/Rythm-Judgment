@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5siyf14h51k4"]
+[gd_scene load_steps=8 format=3 uid="uid://b5siyf14h51k4"]
 
 [ext_resource type="Texture2D" uid="uid://c755xmngrh825" path="res://assets/terrain.png" id="1_4jb85"]
 [ext_resource type="PackedScene" uid="uid://dwhtdevvbt5ip" path="res://scenes/player.tscn" id="1_nl7fw"]
 [ext_resource type="PackedScene" uid="uid://cp6425e7ngx8u" path="res://scenes/gema.tscn" id="3_wy32m"]
 [ext_resource type="PackedScene" uid="uid://ccj4n3lqm563q" path="res://scenes/enemy.tscn" id="4_abrn4"]
+[ext_resource type="PackedScene" uid="uid://bqx87qs3r4ett" path="res://scenes/Utility/enemy_spawner.tscn" id="5_uo62n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0w7cx"]
 texture = ExtResource("1_4jb85")
@@ -5089,3 +5090,5 @@ collision_mask = 2
 
 [node name="Enemy_bat_weak" parent="." instance=ExtResource("4_abrn4")]
 position = Vector2(-194, -53)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_uo62n")]
