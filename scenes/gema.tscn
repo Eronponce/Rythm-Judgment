@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://cp6425e7ngx8u"]
+
+[ext_resource type="Texture2D" uid="uid://cyuspy4vf0xgj" path="res://assets/Items/Gems/crystal-qubodup-ccby3/crystal-qubodup-ccby3-16-blue.png" id="1_40a8k"]
+[ext_resource type="Script" path="res://scripts/gema.gd" id="1_bll03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x68id"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l1ra"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcig6"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52w7t"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pthwh"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeu17"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd6kx"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eo1g"]
+atlas = ExtResource("1_40a8k")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x70q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x68id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l1ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcig6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52w7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pthwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeu17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd6kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eo1g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2e3oh"]
+
+[node name="Gema" type="Area2D"]
+script = ExtResource("1_bll03")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x70q0")
+autoplay = "default"
+frame_progress = 0.141174
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2e3oh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
